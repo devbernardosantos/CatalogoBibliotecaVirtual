@@ -1,0 +1,284 @@
+/* ===== Variáveis (paleta inspirada no Letterboxd) ===== */
+:root {
+  --fundo: #14181c;
+  --fundo-escuro: #0d1013;
+  --superficie: #1c232b;
+  --superficie-clara: #2c3440;
+  --borda: #3a4553;
+  --texto: #d8e0e8;
+  --texto-suave: #9ab;
+  --verde: #00e054;
+  --laranja: #ff8000;
+  --azul: #40bcf4;
+  --erro: #ff5c5c;
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Sem isso, o display:flex dos cards sobrescreve o atributo hidden do JS */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Cabeçalho (Flexbox) ===== */
+.cabecalho {
+  background: var(--fundo-escuro);
+  border-bottom: 1px solid var(--borda);
+}
+
+.cabecalho__conteudo {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo__pontos {
+  display: flex;
+}
+
+.ponto {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.ponto + .ponto {
+  margin-left: -4px;
+}
+
+.ponto--laranja { background: var(--laranja); }
+.ponto--verde   { background: var(--verde); }
+.ponto--azul    { background: var(--azul); }
+
+.logo__texto {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.menu {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.menu a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-suave);
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+/* ===== Conteúdo ===== */
+.principal {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.secao {
+  margin-bottom: 3rem;
+  scroll-margin-top: 1rem;
+}
+
+.secao__titulo {
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--borda);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--texto-suave);
+}
+
+.rotulo {
+  display: block;
+  margin: 1rem 0 0.35rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.campo {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: var(--superficie-clara);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.campo::placeholder {
+  color: #678;
+}
+
+.campo:focus {
+  outline: none;
+  border-color: var(--verde);
+  background: #fff1;
+}
+
+/* ===== Catálogo (CSS Grid responsivo) ===== */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.livro {
+  aspect-ratio: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px #0008;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.livro:hover {
+  border-color: var(--verde);
+  transform: translateY(-4px);
+}
+
+.livro__titulo {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 2px 6px #000a;
+}
+
+.livro__autor {
+  margin: 0.35rem 0 0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fffc;
+}
+
+/* "Capas" feitas só com gradiente, uma por livro */
+.livro--1 { background: linear-gradient(160deg, #3b5d2a, #14210f); }
+.livro--2 { background: linear-gradient(160deg, #a11d1d, #2a0808); }
+.livro--3 { background: linear-gradient(160deg, #8a6a3a, #2b2010); }
+.livro--4 { background: linear-gradient(160deg, #1f5f8b, #0a1d2e); }
+.livro--5 { background: linear-gradient(160deg, #d4a017, #5a3d05); }
+.livro--6 { background: linear-gradient(160deg, #e0560f, #3a1204); }
+
+/* ===== Formulário ===== */
+.botao {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.85rem;
+  background: var(--verde);
+  border: none;
+  border-radius: 4px;
+  color: #04210f;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.botao:hover {
+  filter: brightness(1.1);
+}
+
+.mensagem {
+  min-height: 1.5em;
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+/* Classes que o JS vai alternar com classList */
+.mensagem--erro    { color: var(--erro); }
+.mensagem--sucesso { color: var(--verde); }
+
+/* ===== Rodapé ===== */
+.rodape {
+  padding: 2rem;
+  background: var(--fundo-escuro);
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.rodape p {
+  margin: 0 0 0.5rem;
+}
+
+.rodape a {
+  color: var(--laranja);
+  text-decoration: underline;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .cabecalho__conteudo {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .principal {
+    padding: 1rem;
+  }
+
+  .grade {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+}

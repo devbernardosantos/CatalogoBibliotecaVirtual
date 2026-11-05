@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca Virtual</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body id="topo">
+
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <a class="logo" href="#topo" aria-label="Biblioteca Virtual">
+        <span class="logo__pontos" aria-hidden="true">
+          <span class="ponto ponto--laranja"></span>
+          <span class="ponto ponto--verde"></span>
+          <span class="ponto ponto--azul"></span>
+        </span>
+        <span class="logo__texto">Biblioteca Virtual</span>
+      </a>
+
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#sugestoes">Sugerir aquisição</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="principal">
+
+    <section id="catalogo" class="secao">
+      <h2 class="secao__titulo">Nosso acervo</h2>
+
+      <label for="busca" class="rotulo">Pesquisar livro</label>
+      <input type="search" id="busca" class="campo" placeholder="Digite o título...">
+
+      <div class="grade" id="lista-livros">
+        <article class="livro livro--1">
+          <h3 class="livro__titulo">O Senhor dos Anéis</h3>
+          <p class="livro__autor">J. R. R. Tolkien</p>
+        </article>
+        <article class="livro livro--2">
+          <h3 class="livro__titulo">1984</h3>
+          <p class="livro__autor">George Orwell</p>
+        </article>
+        <article class="livro livro--3">
+          <h3 class="livro__titulo">Dom Casmurro</h3>
+          <p class="livro__autor">Machado de Assis</p>
+        </article>
+        <article class="livro livro--4">
+          <h3 class="livro__titulo">Fundação</h3>
+          <p class="livro__autor">Isaac Asimov</p>
+        </article>
+        <article class="livro livro--5">
+          <h3 class="livro__titulo">O Pequeno Príncipe</h3>
+          <p class="livro__autor">Antoine de Saint-Exupéry</p>
+        </article>
+        <article class="livro livro--6">
+          <h3 class="livro__titulo">Fahrenheit 451</h3>
+          <p class="livro__autor">Ray Bradbury</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="sugestoes" class="secao">
+      <h2 class="secao__titulo">Sugerir novo livro</h2>
+
+      <form action="#" method="post" id="form-sugestao" novalidate>
+        <label for="nome" class="rotulo">Nome do leitor</label>
+        <input type="text" id="nome" name="nome" class="campo">
+
+        <label for="titulo" class="rotulo">Título do livro</label>
+        <input type="text" id="titulo" name="titulo" class="campo">
+
+        <button type="submit" class="botao">Enviar sugestão</button>
+      </form>
+
+      <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>Desenvolvimento Web · Biblioteca Virtual</p>
+    <a href="#topo">Voltar ao topo</a>
+  </footer>
+
+</body>
+</html>
